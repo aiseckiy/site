@@ -19,6 +19,7 @@ body{
 
 .container {
     display: flex;
+    flex-direction: column;
     margin: 0 auto 0 auto;
     align-items: center;
     justify-content: center;
@@ -68,8 +69,8 @@ body{
     position: relative;
     color: white;
     display: flex;
-    margin: 0;
-    border-radius: 50px;
+    margin: 0 25px;
+    border-radius: 25px;
     justify-content: center;
     min-width: 320px;
     max-width: 100%;
@@ -77,8 +78,8 @@ body{
 
 .me-text{
     position: absolute;
-    border-radius: 50px;
-    padding: 18px;
+    border-radius: 25px;
+    padding: 20px 5px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     max-width: 80%;
@@ -91,10 +92,10 @@ body{
 .card{
     box-sizing: border-box;
     position: relative;
-    border-radius: 50px;
+    border-radius: 25px;
     background-color: rgb(237, 237, 237);
     color: black;
-    margin: 25px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,58 +172,35 @@ body{
     align-items: center;
 }
 
-.form {
+.form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.form-input {
-    box-sizing: border-box;
-    border: 2px solid #ffffff;
+.form-control {
+    height: 45px;
+    border-radius: 15px;
+    background-color: black;
+    border: 2px solid white;
+    padding: 0 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.btn {
     background-color: rgb(0, 0, 0);
-    transition: all .3s ease;
+    color: white;
+    border: 2px solid white;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
-    height: 67px;
-    padding: 0 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: white;
-    max-width: 100%;
-    width: 320px;
-    border-radius: 15px;
-}
-
-.form-textarea {
-    height: 160px;
-    border-radius: 15px;
-    border: 2px solid #ffffff;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    z-index: 10;
-    background-color: rgba(1,1,1);
-    transition: all .3s ease;
-    color: white;
-    resize: vertical;
-    max-width: 100%;
+    font-weight: 700;
     box-sizing: border-box;
-    width: 320px;
-}
-
-.form-btn {
-    width: 100%;
+    min-width: 320px;
     height: 50px;
+    align-items: center;
+    font-size: 18px;
+    justify-content: center;
     border-radius: 15px;
-    border: 2px solid #ffffff;
-    font-weight: 500;
-    font-size: 20px;
-    margin-top: 17px;
-    background-color: rgba(1,1,1,0);
-    transition: all .3s ease;
-    color: white;
-
 }
+

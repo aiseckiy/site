@@ -30,7 +30,7 @@
     <main class="main">
         <div class="container">
             <div class="about-me">
-                <a class="head-text"><h1>ОБО МНЕ</h1></a>
+                <a class="head-text"><h2>Обо мне</h1></a>
         
                 <div class="me">
                     <img class="me" src="images/about-me.jpg" alt="">
@@ -46,30 +46,30 @@
         <div class="container">
             
             <div class="service">
-                <h1 class="head-text">МОИ УСЛУГИ</h1>
+                <h2 class="head-text">Мои услуги</h1>
         
                 <div class="service-card">
                 
                     <div class="card">
                         <h2 class="card-text">Таргетированная реклама</h2>
-                        <img class="img-card" src="images/device.png" alt="">
+                        <img class="img-card" src="images/Device.png" alt="">
                     </div>
                 
                     <div class="card">
                         <h2 class="card-text">Одностраничные сайты</h2>
-                        <img class="img-card" src="images/device2.png" alt="">
+                        <img class="img-card" src="images/Device2.png" alt="">
                     </div>
                     
                     <div class="card">
                         <h2 class="card-text">
                             Продающие креативы
                         </h2>
-                        <img class="img-card" src="images/device3.png" alt="">
+                        <img class="img-card" src="images/Device3.png" alt="">
                     </div>
         
                     <div class="card">
                         <h2 class="card-text">Инфографика для WB & OZON</h2>
-                        <img class="img-card" src="images/device4.png" alt="">
+                        <img class="img-card" src="images/Device4.png" alt="">
                     </div>
         
                 </div>
@@ -78,23 +78,59 @@
         
         </div>
         
+
         <div class="container">
-            <div class="contact">
-                <h1 class="head-text">СВЯЖИТЕСЬ СО МНОЙ</h1> 
+            <h2>Свяжитесь со мной</h2>
+            <form id="tg">
+                <div class="aaa">
+                    <div class="form-group">
+                        <input placeholder="Имя" type="text" name="name" class="form-control">
+                    </div>
 
-                    <form class="form" id="tg">
-                        <input type="text" name="name" placeholder="имя" class="form-input" required="">
-
-                        <input type="email" name="user-mail" placeholder="почта" class="form-input" required="">
-
-                        <div id="success" class="alert" role="alert" style="display: none;"></div>
-                        
-                        <button type="submit" class="form-btn">отправить</button>
-                    </form>
+                    <div class="form-group">
+                        <input placeholder="Почта" type="email" name="email" class="form-control">
+    
+                        <div id="success" style="margin: 12px 0;" class="alert alert-success" role="alert" style="display: none;"></div>
+    
+                        <button type="submit" class="btn form-group">Отправить</button>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
+            </form>
+        </div>    
+    
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+        <script>
+            const TOKEN = "6342167674:AAGGB5qc5QDV2-aJKnSQzETq4PIhEaaoPVA";
+            const CHAT_ID = "-1001807981991";
+            const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
+            const success = document.getElementById('success')
+    
+            document.getElementById('tg').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let message = '<b>Заявка с сайта!</b>\n';
+                message += `<b>Отправитель: </b> ${ this.name.value }\n`;
+                message += `<b>Телефон: </b> ${ this.email.value }\n`;
+    
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                })
+                .then((res) => {
+                    this.name.value = "";
+                    this.email.value = "";
+                    success.innerHTML = "Сообщение отправлено!";
+                    success.style.display = "block";
+                })
+                .catch((err) => {
+                    console.warn(err);
+                })
+                .finally(() => {
+                    console.log('Конец')
+                })
+            })
+        </script>
         
     </main>
 
@@ -123,40 +159,6 @@
         </div>
     </footer>
 </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <script>
-        const TOKEN = "6342167674:AAGGB5qc5QDV2-aJKnSQzETq4PIhEaaoPVA";
-        const CHAT_ID = "-1001807981991";
-        const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
-        const success = document.getElementById('success')
-
-        document.getElementById('tg').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let message = '<b>Заявка с сайта!</b>\n';
-            message += `<b>Отправитель: </b> ${ this.name.value }\n`;
-            message += `<b>Телефон: </b> ${ this.email.value }\n`;
-
-            axios.post(URI_API, {
-                chat_id: CHAT_ID,
-                parse_mode: 'html',
-                text: message
-            })
-            .then((res) => {
-                this.name.value = "";
-                this.email.value = "";
-                success.innerHTML = "Сообщение отправлено!";
-                success.style.display = "block";
-            })
-            .catch((err) => {
-                console.warn(err);
-            })
-            .finally(() => {
-                console.log('Конец')
-            })
-        })
-    </script>
 
 </body>
 </html>
